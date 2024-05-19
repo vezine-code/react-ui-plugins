@@ -179,6 +179,47 @@ export default MyComponent;
 - **🛠️ Maintainability**: Isolating plugin components simplifies the code structure, making it easier to manage and debug.
 - **🔧 Flexibility**: Allows for dynamic and conditional rendering based on user interactions or specific conditions.
 
+### Example of a Sample Plugin
+
+Below is an example of what a sample plugin might look like. This plugin can be used with the `usePluginRenderer` hook to demonstrate conditional plugin rendering.
+
+```tsx
+import { createPagePlugin } from '@vezine/react-ui-plugins/utils/pagePlugin.utils';
+import SampleComponent from './SampleComponent';
+
+export const SamplePlugin = () =>
+  createPagePlugin<{ title?: string; description?: string }>({
+    transformData: () => {
+      return {
+        title: "Sample Title",
+        description: "This is a sample description for the plugin.",
+      };
+    },
+    render: ({ title, description } = { title: "" }) => {
+      return <SampleComponent title={title} description={description} />;
+    },
+  });
+```
+
+### Sample Component
+
+Here is the `SampleComponent` used in the plugin:
+
+```tsx
+import React from 'react';
+
+const SampleComponent = ({ title, description }) => {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+  );
+};
+
+export default SampleComponent;
+```
+
 By adopting this approach, you can enhance the overall performance, maintainability, and flexibility of your application.
 
 ## API
