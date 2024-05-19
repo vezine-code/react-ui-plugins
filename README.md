@@ -59,14 +59,14 @@ export default MyComponent;
 
 ### Example Plugin
 
-Below is an example of a plugin implementation using the `createPagePlugin` utility:
+Below is an example of a plugin implementation using the `createUIPlugin` utility:
 
 ```tsx
-import { createPagePlugin } from "@vezine/react-ui-plugins";
+import { createUIPlugin } from "@vezine/react-ui-plugins";
 import SampleComponent from "../SampleComponent";
 
 export const SamplePlugin = () =>
-  createPagePlugin<{ title?: string; description?: string }>({
+  createUIPlugin<{ title?: string; description?: string }>({
     transformData: () => {
       return {
         title: "Sample Title",
@@ -87,7 +87,7 @@ A custom hook for rendering an array of plugins with optional dependencies.
 
 #### Type Parameters
 
-- `T`: The type of the plugins. Each plugin should conform to the `PagePlugin` interface.
+- `T`: The type of the plugins. Each plugin should conform to the `UIPlugin` interface.
 - `K`: The type of the dependencies. These are used to determine when to re-run the effect that processes the plugin data.
 
 #### Parameters
