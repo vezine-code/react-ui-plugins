@@ -58,9 +58,10 @@ export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
   }, deps);
 
   const renderPluginData = (plugin: UIPlugin, index: number) => {
-    return plugin.render(
-      pluginData[getPluginName(plugin, index)] || ({} as any)
-    );
+    const pluginName = getPluginName(plugin, index);
+    const pluginObj = pluginName ? pluginData[pluginName] : ({} as any);
+    
+    return plugin.render(pluginObj?.transformData() || ({} as NonNullable<T>));
   };
 
   const renderPlugins = () => {
@@ -70,6 +71,7 @@ export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
       </React.Fragment>
     ));
   };
+
 
   return {
     /**

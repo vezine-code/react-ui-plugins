@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.20
+
+### Patch Changes
+
+- logic cleanup
+
 ## 0.0.19
 
 ### Patch Changes
