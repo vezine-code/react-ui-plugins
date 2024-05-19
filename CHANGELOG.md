@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.6
+
+### Patch Changes
+
+- update packagejson with npm public publish
+
 ## 0.0.5
 
 ### Patch Changes
