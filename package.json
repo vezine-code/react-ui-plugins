@@ -1,6 +1,6 @@
 {
   "name": "@vezine/react-ui-plugins",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -26,7 +26,7 @@
     "url": "https://github.com/vezinecode/react-ui-plugins/issues"
   },
   "homepage": "https://github.com/vezinecode/react-ui-plugins#readme",
-  "peerDependencies": {
+  "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.17
+
+### Patch Changes
+
+- remove peer deps
+
 ## 0.0.16
 
 ### Patch Changes
