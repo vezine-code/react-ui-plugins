@@ -33,9 +33,9 @@ yarn add @vezine/react-ui-plugins
 
 The `usePluginRenderer` hook simplifies the rendering of plugin components in a React application. It manages the state of the transformed data provided by each plugin and ensures that the data is updated whenever the specified dependencies change.
 
-### Example
+## ✅ Good Example: Plugin Rendering
 
-Here is an example of how to use the `usePluginRenderer` hook:
+In this example, we use the plugin architecture to conditionally render only the necessary plugins, improving performance and maintainability.
 
 ```tsx
 import React from 'react';
@@ -57,7 +57,15 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-### Example of Conditional Plugin Rendering
+### 🌟 Benefits of This Approach
+
+- **🚀 Performance**: Only the necessary plugins are rendered, resulting in a faster and more efficient application.
+- **🛠️ Maintainability**: Isolating plugin components simplifies the code structure, making it easier to manage and debug.
+- **🔧 Flexibility**: Allows for dynamic and conditional rendering based on user interactions or specific conditions.
+
+By adopting this approach, you can enhance the overall performance, maintainability, and flexibility of your application.
+
+## ✅ Good Example: Conditional Plugin Rendering
 
 Rendering a single plugin based on specific conditions:
 
@@ -109,6 +117,40 @@ export const SamplePlugin = () =>
     },
   });
 ```
+
+## 🚫 Bad Example: Regularly Rendering All Components
+
+In this example, all components are rendered regardless of whether they are needed or not. This can lead to performance issues and unnecessary complexity in the codebase.
+
+```jsx
+import React from 'react';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import Content from './components/Content';
+import Footer from './components/Footer';
+
+const Dashboard = () => {
+  return (
+    <div>
+      <Header />
+      <Sidebar />
+      <Content />
+      <Footer />
+    </div>
+  );
+};
+
+export default Dashboard;
+```
+
+### ⚠️ Issues with This Approach
+
+- **🐢 Performance**: Rendering all components even when they are not needed can slow down the application.
+- **🔄 Complexity**: Managing and maintaining a large number of components in a single render function can lead to confusion and increase the risk of bugs.
+- **❌ Lack of Flexibility**: This approach does not allow for dynamic rendering based on user interactions or specific conditions.
+
+By using a plugin architecture, you can address these issues and improve the overall performance and maintainability of your application.
+
 
 ## API
 
