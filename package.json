@@ -1,6 +1,6 @@
 {
   "name": "@vezine/react-ui-plugins",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "scripts": {
