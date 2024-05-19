@@ -1,6 +1,11 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
+import {
+  BasePluginData,
+  createUIPlugin,
+  getPluginPrefix,
+  UIPlugin,
+} from "./utils/uiPlugin.utils";
 
 /**
  * React hook for rendering an array of plugins with optional dependencies.
@@ -31,9 +36,9 @@ import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
  * const MyComponent = () => {
  *  const dependencies = [];
  *  const initialState = {}
- * 
+ *
  *   const { renderPlugins } = usePluginRenderer(
- *    plugins, 
+ *    plugins,
  *    dependencies,
  *    initialState
  *   );
@@ -51,19 +56,17 @@ import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
  */
 export const usePluginRenderer = (
   plugins: UIPlugin[],
-  deps: unknown[] = [],
-  initialState: Record<string, unknown> = {}
+  deps: unknown[] = []
 ): { renderPlugins: () => React.ReactNode[] } => {
-  const [pageData, setPageData] =
-    useState<Record<string, unknown>>(initialState);
+  const [pageData, setPageData] = useState<BasePluginData>({});
 
   useEffect(() => {
-    const data: Record<string, unknown> = {};
+    const data: BasePluginData = {};
 
     plugins.forEach((plugin, index) => {
       if (typeof plugin.transformData === "function") {
         const pluginName = plugin?.name;
-        data[pluginName || `plugin_${index}`] = plugin.transformData();
+        data[pluginName || getPluginPrefix(index)] = plugin.transformData();
       }
     });
 
@@ -78,9 +81,10 @@ export const usePluginRenderer = (
      */
     renderPlugins: (): React.ReactNode[] =>
       plugins.map((plugin, index) => (
-        <React.Fragment key={`plugin_${index}`}>
-          {plugin.render &&
-            plugin.render(pageData[plugin?.name || `plugin_${index}`])}
+        <React.Fragment key={getPluginPrefix(index)}>
+          {plugin.render(
+            pageData[plugin?.name || getPluginPrefix(index)] || ({} as any)
+          )}
         </React.Fragment>
       )),
   };
