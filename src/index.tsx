@@ -42,7 +42,7 @@ import { createUIPlugin, UIPlugin } from "./utils/pagePlugin.utils";
  * @memberof @vezine/react-ui-plugins
  */
 
-export const usePluginRenderer = <T extends UIPlugin, K>(
+export const usePluginRenderer = <T extends UIPlugin, K = any>(
   plugins: T[],
   deps: K[] = []
 ): { renderPlugins: () => React.ReactNode[] } => {

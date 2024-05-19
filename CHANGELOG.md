@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.8
+
+### Patch Changes
+
+- update default types
+
 ## 0.0.7
 
 ### Patch Changes
