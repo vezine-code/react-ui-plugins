@@ -195,14 +195,14 @@ import { createUIPlugin } from '@vezine/react-ui-plugins';
 import SampleComponent from './SampleComponent';
 
 export const SamplePlugin = () =>
-  createUIPlugin<{ title?: string; description?: string }>({
+  createUIPlugin<{ title: string; description: string }>({
     transformData: () => {
       return {
         title: "Sample Title",
         description: "This is a sample description for the plugin.",
       };
     },
-    render: ({ title, description } = { title: "" }) => {
+    render: ({ title, description } = { title: "", description: "" }) => {
       return <SampleComponent title={title} description={description} />;
     },
   });
