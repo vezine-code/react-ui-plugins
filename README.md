@@ -2,6 +2,23 @@
 
 A React library providing a custom hook for rendering an array of plugins with optional dependencies.
 
+## Why is this useful?
+
+Building feature-heavy React components can often lead to extensive and complex render functions, making it difficult to maintain and extend the codebase. This complexity can result in confusion and increased risk of introducing bugs when adding new features or modifying existing ones.
+
+### Benefits of Plugin Architecture
+
+- **Modularity**: Each plugin component is developed and maintained in isolation, ensuring that changes in one plugin do not affect others.
+- **Maintainability**: Isolated plugin components simplify the code structure, making it easier to understand, maintain, and debug.
+- **Scalability**: The plugin architecture allows you to add new features easily by simply integrating new plugins, promoting a scalable and flexible codebase.
+- **Reduced Risk**: By isolating features into separate plugins, you minimize the risk of breaking existing functionality when introducing changes.
+
+### Example Scenario
+
+Consider a dashboard application with various widgets such as charts, tables, and forms. Using a plugin architecture, each widget can be developed as a separate plugin. This approach allows developers to focus on individual widgets without worrying about the overall dashboard complexity. New widgets can be added or existing ones modified independently, ensuring the dashboard remains robust and maintainable.
+
+By adopting a plugin architecture, you can enhance the modularity, maintainability, and scalability of your React components, leading to a more manageable and flexible codebase.
+
 ## Installation
 
 To install the library, use npm or yarn:
@@ -45,7 +62,7 @@ export default MyComponent;
 Below is an example of a plugin implementation using the `createPagePlugin` utility:
 
 ```tsx
-import { createPagePlugin } from "../../../utils/pagePlugin.utils";
+import { createPagePlugin } from "@vezine/react-ui-plugins";
 import SampleComponent from "../SampleComponent";
 
 export const SamplePlugin = () =>
