@@ -191,7 +191,7 @@ export default MyComponent;
 Below is an example of what a sample plugin might look like. This plugin can be used with the `usePluginRenderer` hook to demonstrate conditional plugin rendering.
 
 ```tsx
-import { createUIPlugin } from '@vezine/react-ui-plugins/utils/uiPlugin.utils';
+import { createUIPlugin } from '@vezine/react-ui-plugins';
 import SampleComponent from './SampleComponent';
 
 export const SamplePlugin = () =>
