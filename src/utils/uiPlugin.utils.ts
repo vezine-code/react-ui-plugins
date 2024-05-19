@@ -1,7 +1,7 @@
 const PLUGIN_PREFIX = "ui-plugin";
 
 export type BasePluginData<T = unknown> = Record<string, Required<T>>;
-export interface UIPlugin<T = BasePluginData> {
+export interface UIPlugin<T = unknown> {
   name?: string;
   transformData?: () => Required<T>;
   render: (data: Required<T>) => JSX.Element;

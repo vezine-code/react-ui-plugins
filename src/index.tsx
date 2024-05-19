@@ -48,7 +48,7 @@ import {
  * @memberof @vezine/react-ui-plugins
  */
 export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
-  plugins: UIPlugin<Required<T>>[],
+  plugins: UIPlugin[] | UIPlugin<Partial<T>>[],
   deps: unknown[] = []
 ): { renderPlugins: () => React.ReactNode[] } => {
   const [pluginData, setPluginData] = useState<BasePluginData>({});
