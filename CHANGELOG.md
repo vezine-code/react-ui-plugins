@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.11
+
+### Patch Changes
+
+- update readme
+
 ## 0.0.10
 
 ### Patch Changes

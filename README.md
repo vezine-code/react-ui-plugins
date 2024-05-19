@@ -48,7 +48,11 @@ const MyComponent = () => {
   const dependencies = [] // Optional
   const intitialState = {} // Optional
 
-  const { renderPlugins } = usePluginRenderer(plugins, dependencies, intitialState);
+  const { renderPlugins } = usePluginRenderer(
+    plugins, 
+    dependencies, 
+    intitialState
+    );
 
   return (
     <div>
