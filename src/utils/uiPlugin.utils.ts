@@ -1,13 +1,13 @@
 const PLUGIN_PREFIX = "ui-plugin";
 
-export type BasePluginData<T = any> = Record<string, T>;
-export interface UIPlugin<T = any> {
+export type BasePluginData<T = unknown> = Record<string, Required<T>>;
+export interface UIPlugin<T = BasePluginData> {
   name?: string;
-  transformData?: () => T;
-  render: (data: T) => JSX.Element;
+  transformData?: () => Required<T>;
+  render: (data: Required<T>) => JSX.Element;
 }
 
-export const createUIPlugin = <T>({
+export const createUIPlugin = <T,>({
   transformData,
   render,
 }: UIPlugin<T>): UIPlugin<T> => {
@@ -21,8 +21,8 @@ export const initializePlugins = (plugins: UIPlugin[]) => {
 
   plugins.forEach((plugin, index) => {
     if (typeof plugin.transformData === "function") {
-      const pluginName = plugin?.name;
-      data[pluginName || getPluginPrefix(index)] = plugin.transformData();
+      const pluginName = plugin.name || getPluginPrefix(index);
+      data[pluginName] = plugin.transformData();
     }
   });
 

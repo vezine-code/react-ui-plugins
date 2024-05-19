@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import {
+  UIPlugin,
   BasePluginData,
   createUIPlugin,
   getPluginName,
   getPluginPrefix,
   initializePlugins,
-  UIPlugin,
 } from "./utils/uiPlugin.utils";
 
 /**
@@ -48,7 +48,7 @@ import {
  * @memberof @vezine/react-ui-plugins
  */
 export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
-  plugins: UIPlugin[]| UIPlugin<T>[],
+  plugins: UIPlugin<Required<T>>[],
   deps: unknown[] = []
 ): { renderPlugins: () => React.ReactNode[] } => {
   const [pluginData, setPluginData] = useState<BasePluginData>({});
