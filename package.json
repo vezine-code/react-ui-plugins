@@ -1,6 +1,6 @@
 {
   "name": "@vezine/react-ui-plugins",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "scripts": {
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/vezinecode/react-ui-plugins#readme",
   "dependencies": {
+    "@changesets/cli": "^2.27.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "ts-node": "^10.9.2"
