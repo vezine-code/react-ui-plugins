@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.7
+
+### Patch Changes
+
+- correctly removes unused package'
+
 ## 0.0.6
 
 ### Patch Changes
