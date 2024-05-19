@@ -6,6 +6,10 @@ A React library providing a custom hook for rendering an array of plugins with o
 
 Building feature-heavy React components can often lead to extensive and complex render functions, making it difficult to maintain and extend the codebase. This complexity can result in confusion and increased risk of introducing bugs when adding new features or modifying existing ones.
 
+## What is Vezine?
+
+Vezine is a cutting-edge toolkit designed to enhance the web development experience. Inspired by the need for modularity and flexibility, Vezine offers a powerful set of features that streamline the creation of robust web applications, supporting various design patterns and architectural paradigms.
+
 ### Benefits of Plugin Architecture
 
 - **Modularity**: Each plugin component is developed and maintained in isolation, ensuring that changes in one plugin do not affect others.
