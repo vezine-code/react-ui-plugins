@@ -33,7 +33,7 @@ yarn add @vezine/react-ui-plugins
 
 The `usePluginRenderer` hook simplifies the rendering of plugin components in a React application. It manages the state of the transformed data provided by each plugin and ensures that the data is updated whenever the specified dependencies change.
 
-## ✅ Good Example: Plugin Rendering
+## Example
 
 In this example, we use the plugin architecture to conditionally render only the necessary plugins, improving performance and maintainability.
 
@@ -65,7 +65,7 @@ export default MyComponent;
 
 By adopting this approach, you can enhance the overall performance, maintainability, and flexibility of your application.
 
-## ✅ Good Example: Conditional Plugin Rendering
+## Example: Conditional Plugin Rendering
 
 Rendering a single plugin based on specific conditions:
 
@@ -96,7 +96,7 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
-### Example Plugin
+### Example Plugin Creation
 
 Below is an example of a plugin implementation using the `createUIPlugin` utility:
 
@@ -118,11 +118,11 @@ export const SamplePlugin = () =>
   });
 ```
 
-## 🚫 Bad Example: Regularly Rendering All Components
+## The Old Way: Regularly Rendering All Components 🚫
 
 In this example, all components are rendered regardless of whether they are needed or not. This can lead to performance issues and unnecessary complexity in the codebase.
 
-```jsx
+```tsx
 import React from 'react';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
@@ -142,6 +142,44 @@ const Dashboard = () => {
 
 export default Dashboard;
 ```
+
+### ⚠️ Issues with This Approach
+
+- **🐢 Performance**: Rendering all components even when they are not needed can slow down the application.
+- **🔄 Complexity**: Managing and maintaining a large number of components in a single render function can lead to confusion and increase the risk of bugs.
+- **❌ Lack of Flexibility**: This approach does not allow for dynamic rendering based on user interactions or specific conditions.
+
+## The New Way: Conditional Plugin Rendering ✅
+
+In this example, we use the plugin architecture to conditionally render only the necessary plugins, improving performance and maintainability.
+
+```tsx
+import React from 'react';
+import { usePluginRenderer } from '@vezine/react-ui-plugins';
+import { SamplePlugin } from './plugins/SamplePlugin';
+
+const plugins = [SamplePlugin()];
+
+const MyComponent = () => {
+  const { renderPlugins } = usePluginRenderer(plugins, []);
+
+  return (
+    <div>
+      {renderPlugins()}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+### 🌟 Benefits of This Approach
+
+- **🚀 Performance**: Only the necessary plugins are rendered, resulting in a faster and more efficient application.
+- **🛠️ Maintainability**: Isolating plugin components simplifies the code structure, making it easier to manage and debug.
+- **🔧 Flexibility**: Allows for dynamic and conditional rendering based on user interactions or specific conditions.
+
+By adopting this approach, you can enhance the overall performance, maintainability, and flexibility of your application.
 
 ### ⚠️ Issues with This Approach
 
