@@ -184,11 +184,11 @@ export default MyComponent;
 Below is an example of what a sample plugin might look like. This plugin can be used with the `usePluginRenderer` hook to demonstrate conditional plugin rendering.
 
 ```tsx
-import { createPagePlugin } from '@vezine/react-ui-plugins/utils/pagePlugin.utils';
+import { createUIPlugin } from '@vezine/react-ui-plugins/utils/uiPlugin.utils';
 import SampleComponent from './SampleComponent';
 
 export const SamplePlugin = () =>
-  createPagePlugin<{ title?: string; description?: string }>({
+  createUIPlugin<{ title?: string; description?: string }>({
     transformData: () => {
       return {
         title: "Sample Title",
@@ -230,13 +230,13 @@ A custom hook for rendering an array of plugins with optional dependencies.
 
 #### Type Parameters
 
-- `T`: The type of the plugins. Each plugin should conform to the `UIPlugin` interface.
-- `K`: The type of the dependencies. These are used to determine when to re-run the effect that processes the plugin data.
+- `UIPlugin`: The type of the plugins. Each plugin should conform to the `UIPlugin` interface.
+- `unknown`: The type of the dependencies. These are used to determine when to re-run the effect that processes the plugin data.
 
 #### Parameters
 
-- `plugins` (`T[]`): The array of plugins to render. Each plugin should have a `transformData` method to process data and a `render` method to return a React element.
-- `deps` (`K[]`, optional): The array of dependencies to watch for changes. When any dependency changes, the plugin data is re-processed.
+- `plugins` (`UIPlugin[]`): The array of plugins to render. Each plugin should have a `transformData` method to process data and a `render` method to return a React element.
+- `deps` (`unknown[]`, optional): The array of dependencies to watch for changes. When any dependency changes, the plugin data is re-processed.
 
 #### Returns
 

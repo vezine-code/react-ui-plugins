@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { createUIPlugin, UIPlugin } from "./utils/pagePlugin.utils";
+import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
 
 /**
  * React hook for rendering an array of plugins with optional dependencies.
@@ -9,18 +9,15 @@ import { createUIPlugin, UIPlugin } from "./utils/pagePlugin.utils";
  * It manages the state of the transformed data provided by each plugin and ensures that the data
  * is updated whenever the specified dependencies change.
  *
- * @template T - The type of the plugins. Each plugin should conform to the `UIPlugin` interface.
- * @template K - The type of the dependencies. These are used to determine when to re-run the effect
- *               that processes the plugin data.
- * @param {T[]} plugins - The array of plugins to render. Each plugin should have a `transformData`
- *                        method to process data and a `render` method to return a React element.
- * @param {K[]} [deps=[]] - The array of dependencies to watch for changes. When any dependency changes,
- *                          the plugin data is re-processed.
+ * @param {UIPlugin[]} plugins - The array of plugins to render. Each plugin should have a `transformData`
+ *                               method to process data and a `render` method to return a React element.
+ * @param {unknown[]} [deps=[]] - The array of dependencies to watch for changes. When any dependency changes,
+ *                                the plugin data is re-processed.
  * @returns {Object} - An object containing the renderPlugins function.
  * @returns {function} renderPlugins - A function that returns an array of React nodes representing the rendered plugins.
  *
  * @example
- * // Example usage of the usePluginRenderer hook
+ * ```jsx
  * import React from 'react';
  * import { usePluginRenderer } from '@vezine/react-ui-plugins';
  * import { MyPlugin } from './plugins/MyPlugin';
@@ -38,13 +35,12 @@ import { createUIPlugin, UIPlugin } from "./utils/pagePlugin.utils";
  * };
  *
  * export default MyComponent;
- *
+ * ```
  * @memberof @vezine/react-ui-plugins
  */
-
-export const usePluginRenderer = <T extends UIPlugin, K = any>(
-  plugins: T[],
-  deps: K[] = []
+export const usePluginRenderer = (
+  plugins: UIPlugin[],
+  deps: unknown[] = []
 ): { renderPlugins: () => React.ReactNode[] } => {
   const [pageData, setPageData] = useState<Record<string, unknown>>({});
 
@@ -69,7 +65,7 @@ export const usePluginRenderer = <T extends UIPlugin, K = any>(
     renderPlugins: (): React.ReactNode[] =>
       plugins.map((plugin, index) => (
         <React.Fragment key={`plugin_${index}`}>
-          {plugin.render(pageData[`plugin_${index}`])}
+          {plugin.render && plugin.render(pageData[`plugin_${index}`])}
         </React.Fragment>
       )),
   };
