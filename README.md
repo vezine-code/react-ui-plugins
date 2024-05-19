@@ -57,6 +57,37 @@ const MyComponent = () => {
 export default MyComponent;
 ```
 
+### Example of Conditional Plugin Rendering
+
+Rendering a single plugin based on specific conditions:
+
+```tsx
+import React, { useState } from 'react';
+import { usePluginRenderer } from '@vezine/react-ui-plugins';
+import { PluginA, PluginB, PluginC } from './plugins';
+
+const plugins = [PluginA(), PluginB(), PluginC()];
+
+const MyComponent = () => {
+  const [activePlugin, setActivePlugin] = useState('PluginA');
+  const { renderPlugins } = usePluginRenderer(
+    plugins.filter(plugin => plugin.name === activePlugin),
+    [activePlugin]
+  );
+
+  return (
+    <div>
+      <button onClick={() => setActivePlugin('PluginA')}>Show Plugin A</button>
+      <button onClick={() => setActivePlugin('PluginB')}>Show Plugin B</button>
+      <button onClick={() => setActivePlugin('PluginC')}>Show Plugin C</button>
+      {renderPlugins()}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
 ### Example Plugin
 
 Below is an example of a plugin implementation using the `createUIPlugin` utility:
@@ -100,28 +131,6 @@ A custom hook for rendering an array of plugins with optional dependencies.
 An object containing the `renderPlugins` function.
 
 - `renderPlugins` (`function`): A function that returns an array of React nodes representing the rendered plugins.
-
-## Future Enhancements
-
-### Render a Single Plugin
-
-One potential enhancement is the ability to render a single plugin from the array of registered plugins. This feature would allow developers to selectively render individual plugins based on specific conditions or user interactions. 
-
-#### Benefits
-
-- **Selective Rendering**: Improve performance by rendering only the necessary plugins based on the current context or user actions.
-- **Enhanced Control**: Provide more granular control over the display of plugins, allowing for dynamic and conditional rendering logic.
-- **Optimized Resource Usage**: Reduce resource consumption by avoiding the rendering of unused plugins, leading to a more efficient application.
-
-### Implementation Ideas
-
-To achieve this functionality, consider the following approaches:
-
-1. **Filter Method**: Implement a method to filter and retrieve a specific plugin from the array of registered plugins.
-2. **Conditional Logic**: Use conditional rendering within the component to determine which plugin(s) to render based on props or state.
-3. **Configuration Options**: Introduce configuration options that allow developers to specify which plugins should be rendered under certain conditions.
-
-By incorporating these enhancements, the plugin architecture can become even more flexible and powerful, catering to a wider range of use cases and optimizing the overall user experience.
 
 ## License
 
