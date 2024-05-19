@@ -13,6 +13,10 @@ import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
  *                               method to process data and a `render` method to return a React element.
  * @param {unknown[]} [deps=[]] - The array of dependencies to watch for changes. When any dependency changes,
  *                                the plugin data is re-processed.
+ * @param {Record<string, unknown>} [initialState={}] - The initial state of the transformed data.
+ *                                                      This state is used to initialize the `pageData` state
+ *                                                      and ensures that the plugins have defined values during
+ *                                                      the initial render.
  * @returns {Object} - An object containing the renderPlugins function.
  * @returns {function} renderPlugins - A function that returns an array of React nodes representing the rendered plugins.
  *
@@ -40,16 +44,19 @@ import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
  */
 export const usePluginRenderer = (
   plugins: UIPlugin[],
-  deps: unknown[] = []
+  deps: unknown[] = [],
+  initialState: Record<string, unknown> = {}
 ): { renderPlugins: () => React.ReactNode[] } => {
-  const [pageData, setPageData] = useState<Record<string, unknown>>({});
+  const [pageData, setPageData] =
+    useState<Record<string, unknown>>(initialState);
 
   useEffect(() => {
     const data: Record<string, unknown> = {};
 
     plugins.forEach((plugin, index) => {
       if (typeof plugin.transformData === "function") {
-        data[`plugin_${index}`] = plugin.transformData();
+        const pluginName = plugin?.name;
+        data[pluginName || `plugin_${index}`] = plugin.transformData();
       }
     });
 
@@ -65,7 +72,8 @@ export const usePluginRenderer = (
     renderPlugins: (): React.ReactNode[] =>
       plugins.map((plugin, index) => (
         <React.Fragment key={`plugin_${index}`}>
-          {plugin.render && plugin.render(pageData[`plugin_${index}`])}
+          {plugin.render &&
+            plugin.render(pageData[plugin?.name || `plugin_${index}`])}
         </React.Fragment>
       )),
   };

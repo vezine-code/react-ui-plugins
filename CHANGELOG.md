@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.10
+
+### Patch Changes
+
+- adds initial state arg to renderer hook
+
 ## 0.0.9
 
 ### Patch Changes

@@ -1,4 +1,5 @@
 export interface UIPlugin<T = unknown> {
+  name?: string;
   transformData?: () => T;
   render: (data: T) => JSX.Element;
 }
