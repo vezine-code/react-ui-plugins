@@ -109,7 +109,7 @@ Below is an example of a plugin implementation using the `createUIPlugin` utilit
 
 ```tsx
 import { createUIPlugin } from "@vezine/react-ui-plugins";
-import SampleComponent from "./plugins/SampleComponent";
+import SampleComponent from "./SampleComponent";
 
 export const SamplePlugin = () =>
   createUIPlugin<{ title: string; description: string }>({
