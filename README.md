@@ -138,7 +138,7 @@ Vezine is a cutting-edge toolkit designed to enhance the web development experie
 
 ## Who is the Author?
 
-Wayne P is a seasoned Solution Engineer with several years of experience in web development. He is driven by a passion for simplifying complexity in the realm of UI development. Wayne believes in the philosophy: "When it's hard, make it easy," and strives to create solutions that enhance the development experience by making complex tasks more manageable and intuitive.
+Wayne P is a seasoned Solution Engineer with several years of experience in web development. He is driven by a passion for simplifying complexity in the realm of UI development. Wayne believes in the philosophy: "When it's hard, make it easy," and strives to create solutions that enhance the development experience by making complex tasks more manageable and intuitive. Tweet him @djstylzdc
 
 ## License
 
