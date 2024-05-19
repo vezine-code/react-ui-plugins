@@ -1,5 +1,23 @@
 # @vezine/react-ui-plugins
 
+## 0.0.14
+
+### Patch Changes
+
+- adds tsup for esm builds
+
+## 0.0.13
+
+### Patch Changes
+
+- cleanup npm ignore
+
+## 0.0.12
+
+### Patch Changes
+
+- package bump
+
 ## 0.0.11
 
 ### Patch Changes

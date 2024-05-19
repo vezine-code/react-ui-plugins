@@ -1,12 +1,12 @@
 {
   "name": "@vezine/react-ui-plugins",
-  "version": "0.0.11",
+  "version": "0.0.14",
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --watch src --exec",
-    "build": "tsc",
-    "type-check": "tsc --noEmit",
+    "build": "tsup",
+    "lint": "tsc --noEmit",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +29,8 @@
     "@changesets/cli": "^2.27.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2"
   },
   "devDependencies": {
     "@types/node": "^20.12.12",
