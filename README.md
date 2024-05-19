@@ -52,7 +52,7 @@ const MyComponent = () => {
     plugins, 
     dependencies, 
     intitialState
-    );
+  );
 
   return (
     <div>
