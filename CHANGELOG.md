@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.16
+
+### Patch Changes
+
+- improve plugin types
+
 ## 0.0.15
 
 ### Patch Changes
