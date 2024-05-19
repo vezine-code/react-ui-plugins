@@ -29,7 +29,14 @@ import { createUIPlugin, UIPlugin } from "./utils/uiPlugin.utils";
  * const plugins = [MyPlugin()];
  *
  * const MyComponent = () => {
- *   const { renderPlugins } = usePluginRenderer(plugins, [someDependency]);
+ *  const dependencies = [];
+ *  const initialState = {}
+ * 
+ *   const { renderPlugins } = usePluginRenderer(
+ *    plugins, 
+ *    dependencies,
+ *    initialState
+ *   );
  *
  *   return (
  *     <div>
