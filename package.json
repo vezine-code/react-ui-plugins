@@ -4,7 +4,6 @@
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "type": "module",
   "scripts": {
     "dev": "nodemon --watch src --exec",
     "build": "tsup",
