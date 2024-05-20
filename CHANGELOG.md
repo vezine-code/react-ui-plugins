@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.21
+
+### Patch Changes
+
+- adds unit tests
+
 ## 0.0.20
 
 ### Patch Changes
