@@ -1,6 +1,6 @@
 {
   "name": "@vezine/react-ui-plugins",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "A React library that enables rendering UI components through a flexible plugin architecture.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vezinecode/react-ui-plugins.git"
+    "url": "https://github.com/vezine-code/react-ui-plugins.git"
   },
   "keywords": [
     "react",
@@ -24,9 +24,9 @@
   "author": "Wayne P",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vezinecode/react-ui-plugins/issues"
+    "url": "https://github.com/vezine-code/react-ui-plugins/issues"
   },
-  "homepage": "https://github.com/vezinecode/react-ui-plugins#readme",
+  "homepage": "https://github.com/vezine-code/react-ui-plugins#readme",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
