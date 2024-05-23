@@ -42,16 +42,57 @@ import React from 'react';
 import { usePluginRenderer } from '@vezine/react-ui-plugins';
 import { SamplePlugin } from './plugins/SamplePlugin';
 
+// Define the list of plugins used in this component.
+// Each plugin is initialized and configured to be ready for rendering.
 const plugins = [SamplePlugin()];
 
 const MyComponent = () => {
-  const dependencies = [] // Optional
+  // Dependencies array can be used to control when plugins are re-initialized.
+  // This array should contain values that, when changed, require re-rendering the plugins.
+  const dependencies = []
 
+  // usePluginRenderer hook prepares and returns a renderPlugins render function.
+  // renderPlugins will dynamically render each plugin based on the current props and state.
   const { renderPlugins } = usePluginRenderer(plugins, dependencies);
 
   return (
     <div>
       {renderPlugins()}
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+## Example with RenderPlugin component
+
+In this example, we use the plugin architecture to conditionally render only the necessary plugins, with the exposed RenderPlugin component.
+
+This is necessary if you decide to use React.cloneElement in the parent
+that will render the plugins.
+
+```tsx
+import React from 'react';
+import { usePluginRenderer } from '@vezine/react-ui-plugins';
+import { SamplePlugin } from './plugins/SamplePlugin';
+
+// Define the list of plugins used in this component.
+// Each plugin is initialized and configured to be ready for rendering.
+const plugins = [SamplePlugin()];
+
+const MyComponent = () => {
+  // Dependencies array can be used to control when plugins are re-initialized.
+  // This array should contain values that, when changed, require re-rendering the plugins.
+ const dependencies = [];
+
+ // usePluginRenderer hook prepares and returns a RenderPlugins component.
+  // RenderPlugins will dynamically render each plugin based on the current props and state.
+   const { RenderPlugins } = usePluginRenderer(plugins, dependencies);
+
+  return (
+    <div>
+      <RenderPlugins />
     </div>
   );
 };
