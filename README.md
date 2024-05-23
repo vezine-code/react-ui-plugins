@@ -84,11 +84,11 @@ const plugins = [SamplePlugin()];
 const MyComponent = () => {
   // Dependencies array can be used to control when plugins are re-initialized.
   // This array should contain values that, when changed, require re-rendering the plugins.
- const dependencies = [];
+  const dependencies = [];
 
- // usePluginRenderer hook prepares and returns a RenderPlugins component.
+  // usePluginRenderer hook prepares and returns a RenderPlugins component.
   // RenderPlugins will dynamically render each plugin based on the current props and state.
-   const { RenderPlugins } = usePluginRenderer(plugins, dependencies);
+  const { RenderPlugins } = usePluginRenderer(plugins, dependencies);
 
   return (
     <div>
