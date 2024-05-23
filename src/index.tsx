@@ -50,28 +50,34 @@ import {
 export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
   plugins: UIPlugin[] | UIPlugin<Partial<T>>[],
   deps: unknown[] = []
-): { renderPlugins: () => React.ReactNode[] } => {
-  const [pluginData, setPluginData] = useState<BasePluginData>({});
+): {
+  renderPlugins: () => React.ReactNode[];
+  RenderPlugins: () => JSX.Element[];
+} => {
+  const [pluginCache, setPluginCache] = useState<BasePluginData>({});
 
   useEffect(() => {
-    setPluginData(initializePlugins(plugins));
+    setPluginCache(initializePlugins(plugins));
   }, deps);
 
-  const renderPluginData = (plugin: UIPlugin, index: number) => {
+  const renderPluginData = <T,>(plugin: UIPlugin, index: number, props: T) => {
     const pluginName = getPluginName(plugin, index);
-    const pluginObj = pluginName ? pluginData[pluginName] : ({} as any);
-    
-    return plugin.render(pluginObj?.transformData() || ({} as NonNullable<T>));
+    const pluginObj = pluginName ? pluginCache[pluginName] : ({} as any);
+    const pluginData = pluginObj?.transformData();
+    const pluginProps = { ...pluginData, ...props };
+
+    return plugin.render(pluginProps);
   };
 
-  const renderPlugins = () => {
+  const renderPlugins = <T,>(props: T) => {
     return plugins.map((plugin, index) => (
       <React.Fragment key={getPluginPrefix(index)}>
-        {renderPluginData(plugin, index)}
+        {renderPluginData(plugin, index, props)}
       </React.Fragment>
     ));
   };
 
+  const RenderPlugins = <T,>(props: T) => renderPlugins(props);
 
   return {
     /**
@@ -80,7 +86,8 @@ export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
      * @returns {React.ReactNode[]} - An array of React nodes representing the rendered plugins.
      */
     renderPlugins,
-  };
+    RenderPlugins,
+  } as any;
 };
 
 export { createUIPlugin, UIPlugin };

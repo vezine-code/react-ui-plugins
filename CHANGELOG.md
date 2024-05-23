@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.24
+
+### Patch Changes
+
+- adds RenderPlugins component to accomodate React.cloneElement
+
 ## 0.0.23
 
 ### Patch Changes
