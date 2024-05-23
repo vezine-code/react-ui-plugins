@@ -10,6 +10,28 @@ import {
 } from "./utils/uiPlugin.utils";
 
 /**
+ * Represents the return type of the PluginRenderer function.
+ */
+/**
+ * Represents the return type of the PluginRenderer.
+ */
+interface PluginRendererReturn {
+  /**
+   * Renders the plugins with the given props.
+   * @param props - (Optional) The props to be passed to the plugins.
+   * @returns An array of React nodes representing the rendered plugins.
+   */
+  renderPlugins: <T>(props: T) => React.ReactNode[];
+
+  /**
+   * Renders the plugins with the given props.
+   * @param props - (Optional) The props to be passed to the plugins.
+   * @returns A JSX element representing the rendered plugins.
+   */
+  RenderPlugins: <T>(props: T) => JSX.Element[];
+}
+
+/**
  * React hook for rendering an array of plugins with optional dependencies.
  *
  * This hook is designed to simplify the rendering of plugin components in a React application.
@@ -50,10 +72,7 @@ import {
 export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
   plugins: UIPlugin[] | UIPlugin<Partial<T>>[],
   deps: unknown[] = []
-): {
-  renderPlugins: () => React.ReactNode[];
-  RenderPlugins: () => JSX.Element[];
-} => {
+): PluginRendererReturn => {
   const [pluginCache, setPluginCache] = useState<BasePluginData>({});
 
   useEffect(() => {

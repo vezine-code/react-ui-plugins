@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.26
+
+### Patch Changes
+
+- updates RenderPlugins types and jsdocs
+
 ## 0.0.25
 
 ### Patch Changes
