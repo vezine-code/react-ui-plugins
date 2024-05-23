@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.27
+
+### Patch Changes
+
+- update ui render type
+
 ## 0.0.26
 
 ### Patch Changes

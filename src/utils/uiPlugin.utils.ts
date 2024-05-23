@@ -1,10 +1,12 @@
+import { ReactNode } from "react";
+
 const PLUGIN_PREFIX = "ui-plugin";
 
 export type BasePluginData<T = unknown> = Record<string, T>;
 export interface UIPlugin<T = unknown> {
   name?: string;
   transformData?: () => T;
-  render: (data: T) => JSX.Element;
+  render: (data: T) => JSX.Element | ReactNode;
 }
 
 export const createUIPlugin = <T>({
