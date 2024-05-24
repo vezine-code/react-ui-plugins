@@ -21,7 +21,7 @@ interface PluginRendererReturn {
    * @param props - (Optional) The props to be passed to the plugins.
    * @returns An array of React nodes representing the rendered plugins.
    */
-  renderPlugins: <T>(props: T) => React.ReactNode[];
+  renderPlugins: <T>(props?: T) => React.ReactNode[];
 
   /**
    * Renders the plugins with the given props.
@@ -88,7 +88,7 @@ export const usePluginRenderer = <T extends BasePluginData = BasePluginData>(
     return plugin.render(pluginProps);
   };
 
-  const renderPlugins = <T,>(props: T) => {
+  const renderPlugins = <T,>(props?: T) => {
     return plugins.map((plugin, index) => (
       <React.Fragment key={getPluginPrefix(index)}>
         {renderPluginData(plugin, index, props)}
