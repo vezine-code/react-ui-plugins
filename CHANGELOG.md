@@ -1,5 +1,11 @@
 # @vezine/react-ui-plugins
 
+## 0.0.29
+
+### Patch Changes
+
+- last package update with new location details
+
 ## 0.0.28
 
 ### Patch Changes

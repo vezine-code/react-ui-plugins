@@ -2,6 +2,13 @@
 
 A React library providing a custom hook for rendering an array of plugins with optional dependencies.
 
+Notice: This Package Has Moved
+We are excited to announce that @vezine/react-ui-plugins has been moved to a new location to better serve our users and improve our offerings. Please visit the new page for the latest updates and documentation.
+
+[Visit the New Page @ipul-labs](https://gitlab.com/ipul-labs/react-ui-plugins)
+
+Legacy Information
+
 ## Why is this useful?
 
 Building feature-heavy React components can often lead to extensive and complex render functions, making it difficult to maintain and extend the codebase. This complexity can result in confusion and increased risk of introducing bugs when adding new features or modifying existing ones.
